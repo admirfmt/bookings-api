@@ -2,11 +2,11 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY api/package*.json ./
 
 RUN npm ci --omit=dev
 
-COPY . .
+COPY api .
 
 EXPOSE 3000
 

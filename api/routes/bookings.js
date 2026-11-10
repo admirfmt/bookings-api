@@ -22,7 +22,7 @@ export default function registerBookings(server) {
       const result = await pool.query(`
         SELECT * FROM bookings WHERE id = $1`, [req.params.id]);
       if (!result.rows.length) {
-        return res.status(404).json({ error: 'Could not find bookning' });
+        return res.status(404).json({ error: 'Could not find booking' });
       }
       res.status(200).json(rows[0]);
     } catch (e) {
@@ -37,7 +37,7 @@ export default function registerBookings(server) {
       const { name, email, date_time, number_of_people, status = 'PENDING' } = req.body;
 
       if (!name || !email || !date_time || !number_of_people) {
-        return response.status(400).json({
+        return res.status(400).json({
           message: "Invalid request."
         });
       }
@@ -60,7 +60,7 @@ export default function registerBookings(server) {
       const { name, email, date_time, number_of_people, status = 'PENDING' } = req.body;
 
       if (!name || !email || !date_time || !number_of_people) {
-        return response.status(400).json({
+        return res.status(400).json({
           message: "Invalid request."
         });
       }
@@ -70,7 +70,7 @@ export default function registerBookings(server) {
         [name, email, date_time, number_of_people, status, req.params.id]);
       if (!result.rows.length) {
         return res.status(404).json({
-          error: 'Could not find bookning.'
+          error: 'Could not find booking.'
         });
       }
       res.status(200).json(result.rows[0]);
