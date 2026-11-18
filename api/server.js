@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 server.use(express.json());
 
-server.get('/instance', (req, res) => {
+server.get('/api/instance', (req, res) => {
   res.status(200).json({ instance: process.env.INSTANCE_NAME });
 });
 registerBookings(server);

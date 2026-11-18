@@ -24,7 +24,7 @@ export default function registerBookings(server) {
       if (!result.rows.length) {
         return res.status(404).json({ error: 'Could not find booking' });
       }
-      res.status(200).json(rows[0]);
+      res.status(200).json(result.rows[0]);
     } catch (e) {
       console.error(e);
       res.status(500).json({ error: 'Server error' });
